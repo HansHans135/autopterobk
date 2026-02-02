@@ -1,0 +1,782 @@
+[
+    {
+        "object": "server",
+        "attributes": {
+            "id": 1,
+            "external_id": null,
+            "uuid": "93c8acd0-c5a0-4738-9cd8-08696f412f7e",
+            "identifier": "93c8acd0",
+            "name": "翻譯",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 2048,
+                "swap": 0,
+                "disk": 2048,
+                "io": 500,
+                "cpu": 150,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 137,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.11",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "PyNaCl",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "start.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "93c8acd0-c5a0-4738-9cd8-08696f412f7e",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-01T06:18:42+00:00",
+            "created_at": "2025-10-21T05:29:02+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 2,
+            "external_id": null,
+            "uuid": "09b18bbe-6976-469b-8198-8cb94eccfd28",
+            "identifier": "09b18bbe",
+            "name": "YKVS-mc-pe",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 4096,
+                "swap": 0,
+                "disk": 10240,
+                "io": 500,
+                "cpu": 400,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 104,
+            "nest": 5,
+            "egg": 16,
+            "container": {
+                "startup_command": "box64 ./bedrock_server",
+                "image": "ghcr.io/parkervcp/yolks:box64",
+                "installed": 1,
+                "environment": {
+                    "BEDROCK_VERSION": "latest",
+                    "LD_LIBRARY_PATH": ".",
+                    "SERVERNAME": "Bedrock Dedicated Server",
+                    "GAMEMODE": "survival",
+                    "DIFFICULTY": "easy",
+                    "CHEATS": "false",
+                    "STARTUP": "box64 ./bedrock_server",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "09b18bbe-6976-469b-8198-8cb94eccfd28",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2026-01-30T09:33:03+00:00",
+            "created_at": "2025-10-21T05:32:53+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 3,
+            "external_id": null,
+            "uuid": "2c75b6f5-a2ca-469c-a8d9-cc8d2c15f9b3",
+            "identifier": "2c75b6f5",
+            "name": "akina-dash",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 1024,
+                "swap": 0,
+                "disk": 1024,
+                "io": 500,
+                "cpu": 100,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 110,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.11",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "app.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "2c75b6f5-a2ca-469c-a8d9-cc8d2c15f9b3",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-01T06:04:32+00:00",
+            "created_at": "2025-10-21T06:15:00+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 4,
+            "external_id": null,
+            "uuid": "e40955f0-9d0c-4681-bee5-6c99b374c28d",
+            "identifier": "e40955f0",
+            "name": "akina-web",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 1024,
+                "swap": 0,
+                "disk": 2048,
+                "io": 500,
+                "cpu": 100,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 111,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.11",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "app.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "e40955f0-9d0c-4681-bee5-6c99b374c28d",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-01T06:04:13+00:00",
+            "created_at": "2025-10-21T06:15:39+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 5,
+            "external_id": null,
+            "uuid": "125035e1-c0d1-414e-b756-464734cf6069",
+            "identifier": "125035e1",
+            "name": "akina-pay",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 1024,
+                "swap": 0,
+                "disk": 1024,
+                "io": 500,
+                "cpu": 50,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 103,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.13",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "app.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "125035e1-c0d1-414e-b756-464734cf6069",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-01T06:03:29+00:00",
+            "created_at": "2025-10-21T06:29:10+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 6,
+            "external_id": null,
+            "uuid": "9d66a66e-34f1-42c5-ab14-04e4a0fd7a84",
+            "identifier": "9d66a66e",
+            "name": "akina-game",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 1024,
+                "swap": 0,
+                "disk": 1024,
+                "io": 500,
+                "cpu": 50,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 105,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.13",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "app.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "9d66a66e-34f1-42c5-ab14-04e4a0fd7a84",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-01T06:03:29+00:00",
+            "created_at": "2025-10-21T06:29:33+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 10,
+            "external_id": null,
+            "uuid": "980cfe3a-538a-4c53-a5f4-f5605b680da6",
+            "identifier": "980cfe3a",
+            "name": "Hbot-web",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 1024,
+                "swap": 0,
+                "disk": 1024,
+                "io": 500,
+                "cpu": 50,
+                "threads": null,
+                "oom_disabled": true
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 3
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 108,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.11",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "app.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "980cfe3a-538a-4c53-a5f4-f5605b680da6",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-01T06:01:43+00:00",
+            "created_at": "2025-11-09T03:42:19+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 11,
+            "external_id": null,
+            "uuid": "22e81d6d-d2e0-437a-b713-0aef4e871178",
+            "identifier": "22e81d6d",
+            "name": "Hbot-bot",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 1024,
+                "swap": 0,
+                "disk": 1024,
+                "io": 500,
+                "cpu": 50,
+                "threads": null,
+                "oom_disabled": true
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 3
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 109,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.11",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "bot.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "22e81d6d-d2e0-437a-b713-0aef4e871178",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-01T05:59:26+00:00",
+            "created_at": "2025-11-09T03:42:45+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 13,
+            "external_id": null,
+            "uuid": "236fdbfa-a453-4719-8b3b-6ec263907ad1",
+            "identifier": "236fdbfa",
+            "name": "test",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 1024,
+                "swap": 0,
+                "disk": 1204,
+                "io": 500,
+                "cpu": 150,
+                "threads": null,
+                "oom_disabled": true
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 102,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.11",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "fugle-marketdata",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "as.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "236fdbfa-a453-4719-8b3b-6ec263907ad1",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-11-27T04:02:39+00:00",
+            "created_at": "2025-11-27T04:01:07+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 14,
+            "external_id": null,
+            "uuid": "36a486d3-b439-4d99-96cb-47e2c5f134b3",
+            "identifier": "36a486d3",
+            "name": "API",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 512,
+                "swap": 0,
+                "disk": 0,
+                "io": 500,
+                "cpu": 100,
+                "threads": null,
+                "oom_disabled": true
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 2,
+            "allocation": 106,
+            "nest": 5,
+            "egg": 15,
+            "container": {
+                "startup_command": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                "image": "ghcr.io/parkervcp/yolks:python_3.9",
+                "installed": 1,
+                "environment": {
+                    "USER_UPLOAD": "0",
+                    "AUTO_UPDATE": "0",
+                    "PY_PACKAGES": "",
+                    "USERNAME": "",
+                    "GIT_ADDRESS": "",
+                    "BRANCH": "",
+                    "PY_FILE": "app.py",
+                    "ACCESS_TOKEN": "",
+                    "REQUIREMENTS_FILE": "requirements.txt",
+                    "STARTUP": "if [[ -d .git ]] && [[ \"{{AUTO_UPDATE}}\" == \"1\" ]]; then git pull; fi; if [[ ! -z \"{{PY_PACKAGES}}\" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "36a486d3-b439-4d99-96cb-47e2c5f134b3",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2025-12-03T11:10:11+00:00",
+            "created_at": "2025-12-03T05:28:42+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 15,
+            "external_id": null,
+            "uuid": "14f30d60-3250-4244-bad1-f347c224aeaa",
+            "identifier": "14f30d60",
+            "name": "mc-mod",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 8192,
+                "swap": 0,
+                "disk": 10240,
+                "io": 500,
+                "cpu": 400,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 5,
+                "backups": 24
+            },
+            "user": 1,
+            "node": 3,
+            "allocation": 203,
+            "nest": 1,
+            "egg": 2,
+            "container": {
+                "startup_command": "java  -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s \"-jar server.jar\" || printf %s \"@unix_args.txt\" )",
+                "image": "ghcr.io/pterodactyl/yolks:java_17",
+                "installed": 1,
+                "environment": {
+                    "SERVER_JARFILE": "forge-1.20.1-47.4.10-installer.jar",
+                    "MC_VERSION": "latest",
+                    "BUILD_TYPE": "recommended",
+                    "FORGE_VERSION": "61.0.8",
+                    "STARTUP": "java  -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s \"-jar server.jar\" || printf %s \"@unix_args.txt\" )",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "14f30d60-3250-4244-bad1-f347c224aeaa",
+                    "P_SERVER_ALLOCATION_LIMIT": 5
+                }
+            },
+            "updated_at": "2026-01-31T14:25:36+00:00",
+            "created_at": "2026-01-27T11:09:47+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 16,
+            "external_id": null,
+            "uuid": "686181ab-80e4-422b-9869-f36957baea6c",
+            "identifier": "686181ab",
+            "name": "mc-one",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 4096,
+                "swap": 0,
+                "disk": 10240,
+                "io": 500,
+                "cpu": 400,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 3,
+            "allocation": 206,
+            "nest": 5,
+            "egg": 25,
+            "container": {
+                "startup_command": "java --add-modules=jdk.incubator.vector -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+                "image": "ghcr.io/ptero-eggs/yolks:java_21",
+                "installed": 1,
+                "environment": {
+                    "MINECRAFT_VERSION": "latest",
+                    "SERVER_JARFILE": "server.jar",
+                    "BUILD_NUMBER": "latest",
+                    "STARTUP": "java --add-modules=jdk.incubator.vector -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "686181ab-80e4-422b-9869-f36957baea6c",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2026-02-01T01:43:07+00:00",
+            "created_at": "2026-01-31T11:39:05+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 17,
+            "external_id": null,
+            "uuid": "7cb93b2f-593c-44e6-af35-dfc3d04079bc",
+            "identifier": "7cb93b2f",
+            "name": "velocity",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 2048,
+                "swap": 0,
+                "disk": 1024,
+                "io": 500,
+                "cpu": 100,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 3,
+            "allocation": 205,
+            "nest": 5,
+            "egg": 26,
+            "container": {
+                "startup_command": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar {{SERVER_JARFILE}}",
+                "image": "ghcr.io/ptero-eggs/yolks:java_21",
+                "installed": 1,
+                "environment": {
+                    "VELOCITY_VERSION": "latest",
+                    "SERVER_JARFILE": "velocity.jar",
+                    "DL_PATH": "",
+                    "BUILD_NUMBER": "latest",
+                    "STARTUP": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar {{SERVER_JARFILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "7cb93b2f-593c-44e6-af35-dfc3d04079bc",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2026-02-01T02:04:34+00:00",
+            "created_at": "2026-01-31T15:49:08+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 18,
+            "external_id": null,
+            "uuid": "f3a059ea-c150-4c92-a756-aa4240ba22ec",
+            "identifier": "f3a059ea",
+            "name": "mc-lobby",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 2048,
+                "swap": 0,
+                "disk": 1024,
+                "io": 500,
+                "cpu": 200,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 3,
+            "allocation": 208,
+            "nest": 1,
+            "egg": 1,
+            "container": {
+                "startup_command": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+                "image": "ghcr.io/pterodactyl/yolks:java_21",
+                "installed": 1,
+                "environment": {
+                    "MINECRAFT_VERSION": "latest",
+                    "SERVER_JARFILE": "server.jar",
+                    "DL_PATH": "",
+                    "BUILD_NUMBER": "latest",
+                    "STARTUP": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "f3a059ea-c150-4c92-a756-aa4240ba22ec",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2026-01-31T16:34:12+00:00",
+            "created_at": "2026-01-31T16:28:59+00:00"
+        }
+    },
+    {
+        "object": "server",
+        "attributes": {
+            "id": 19,
+            "external_id": null,
+            "uuid": "af63d3d7-6ee5-48ef-8af9-3ea57cc3917d",
+            "identifier": "af63d3d7",
+            "name": "mc-sb",
+            "description": "",
+            "status": null,
+            "suspended": false,
+            "limits": {
+                "memory": 4096,
+                "swap": 0,
+                "disk": 10240,
+                "io": 500,
+                "cpu": 400,
+                "threads": null,
+                "oom_disabled": false
+            },
+            "feature_limits": {
+                "databases": 0,
+                "allocations": 0,
+                "backups": 0
+            },
+            "user": 1,
+            "node": 3,
+            "allocation": 209,
+            "nest": 5,
+            "egg": 25,
+            "container": {
+                "startup_command": "java --add-modules=jdk.incubator.vector -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+                "image": "ghcr.io/ptero-eggs/yolks:java_21",
+                "installed": 1,
+                "environment": {
+                    "MINECRAFT_VERSION": "latest",
+                    "SERVER_JARFILE": "server.jar",
+                    "BUILD_NUMBER": "latest",
+                    "STARTUP": "java --add-modules=jdk.incubator.vector -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+                    "P_SERVER_LOCATION": "tw",
+                    "P_SERVER_UUID": "af63d3d7-6ee5-48ef-8af9-3ea57cc3917d",
+                    "P_SERVER_ALLOCATION_LIMIT": 0
+                }
+            },
+            "updated_at": "2026-02-01T06:00:02+00:00",
+            "created_at": "2026-02-01T05:59:32+00:00"
+        }
+    }
+]

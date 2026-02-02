@@ -1,0 +1,23 @@
+{
+    "host": "0.0.0.0",
+    "port": 8080,
+    "base_url": "",
+    "api_key": "",
+    "system_exclude": [
+        ".git/",
+        "__pycache__/",
+        "*.pyc",
+        "node_modules/",
+        ".DS_Store",
+        "*.log",
+        "temp/",
+        "*.tmp",
+        ".env"
+    ],
+    "data_path": "/var/lib/pterodactyl/volumes",
+    "max_size": 2,
+    "account": {
+        "username": "admin",
+        "password": "change_this_password"
+    }
+}

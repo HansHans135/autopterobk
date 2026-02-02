@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header border-0 pb-0">
+                <h5 class="mb-0 text-dark fw-bold">
+                    <i class="fas fa-search-plus text-primary me-2"></i>發現伺服器
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted small mb-3">從 <code>server_tmp.cache</code> 檢測到的新伺服器。</p>
+                
+                {% if server_tmp_data %}
+                    <form method="post" action="{{ url_for('add_server') }}" id="addServerForm">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary-subtle rounded-pill">
+                                {{ server_tmp_data|length }} 個可用
+                            </span>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                <label class="form-check-label small user-select-none" for="selectAll">全選</label>
+                            </div>
+                        </div>
+
+                        <div class="server-list vstack gap-2 mb-3" style="max-height: 400px; overflow-y: auto;">
+                            {% for server in server_tmp_data %}
+                                <div class="p-2 border rounded hover-bg-light transition-base">
+                                    <div class="form-check d-flex align-items-center mb-0">
+                                        <input class="form-check-input server-checkbox mt-0 me-3" type="checkbox" 
+                                               name="selected_servers" value="{{ server.uuid }}" 
+                                               id="server_{{ loop.index }}">
+                                        <div class="w-100">
+                                            <label class="form-check-label d-block cursor-pointer" for="server_{{ loop.index }}">
+                                                <div class="fw-bold text-dark text-truncate" style="max-width: 200px;">
+                                                    {{ server.name }}
+                                                </div>
+                                                <div class="d-flex justify-content-between small mt-1">
+                                                    <span class="text-muted">{{ server.id }} | {{ server.identifier }}</span>
+                                                    <span class="badge bg-secondary-subtle">Node {{ server.node }}</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" onclick="return confirmAddServers()">
+                                <i class="fas fa-plus me-1"></i> 添加選中的伺服器
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="selectAllServers(); document.getElementById('addServerForm').submit();">
+                                添加全部
+                            </button>
+                        </div>
+                    </form>
+                {% else %}
+                    <div class="text-center py-5 bg-light rounded border border-dashed">
+                        <i class="fas fa-box-open text-muted fa-2x mb-3 opacity-50"></i>
+                        <p class="mb-0 text-muted fw-medium">沒有發現新的伺服器</p>
+                        <small class="text-muted mt-1 d-block opacity-75">請確保 cache 檔案存在於 data 目錄</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-header border-0 bg-white pb-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-dark fw-bold">
+                    <i class="fas fa-tasks text-primary me-2"></i>已管理伺服器
+                </h5>
+                <span class="badge bg-secondary-subtle text-dark border">
+                    {{ managed_servers|length }} 個專案
+                </span>
+            </div>
+            
+            <div class="card-body p-4">
+                {% if managed_servers %}
+                    <div class="server-grid">
+                        {% for server_uuid, server_info in managed_servers.items() %}
+                            <div class="card mb-3 border hover-shadow-sm transition-base">
+                                <div class="card-body p-0">
+                                    <div class="d-flex flex-column flex-md-row">
+                                        <div class="p-3 flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="fw-bold fs-5 mb-0 text-dark">
+                                                    {{ server_info.details.name }}
+                                                </h6>
+                                                <div class="d-flex gap-2">
+                                                    <span class="badge bg-info-subtle border border-info-subtle text-info-emphasis">ID: {{ server_info.details.id }}</span>
+                                                    <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">{{ server_info.details.identifier }}</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex gap-3 small text-muted mb-3">
+                                                <span title="Memory"><i class="fas fa-memory me-1"></i> {{ server_info.details.memory }}MB</span>
+                                                <span title="Disk"><i class="fas fa-hdd me-1"></i> {{ server_info.details.disk }}MB</span>
+                                                <span title="CPU"><i class="fas fa-microchip me-1"></i> {{ server_info.details.cpu }}%</span>
+                                                <span title="Node"><i class="fas fa-network-wired me-1"></i> {{ server_info.details.node }}</span>
+                                            </div>
+
+                                            <div class="bg-light p-2 rounded small text-breakfont-monospace border-0">
+                                               <span class="text-muted opacity-75">UUID:</span> <code class="text-dark">{{ server_uuid }}</code>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 bg-light border-start-md" style="min-width: 300px;">
+                                            <form method="post" action="{{ url_for('update_excludes', server_uuid=server_uuid) }}" id="form-update-{{ server_uuid }}">
+                                                <div class="mb-2">
+                                                    <label class="form-label small fw-bold text-muted mb-1 d-flex justify-content-between">
+                                                        <span><i class="fas fa-filter me-1"></i>排除規則</span>
+                                                        <span class="badge bg-white border text-muted">{{ server_info.excludes|length }}</span>
+                                                    </label>
+                                                    <textarea class="form-control form-control-sm border-0 shadow-sm" name="excludes" rows="3" 
+                                                              style="resize: none; font-family: monospace; font-size: 0.85rem;"
+                                                              placeholder="每行一個路徑...">{{ server_info.excludes|join('\n') }}</textarea>
+                                                </div>
+                                            </form>
+                                            
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <button type="submit" form="form-update-{{ server_uuid }}" class="btn btn-sm btn-primary px-3">
+                                                    <i class="fas fa-save me-1"></i> 保存
+                                                </button>
+                                                
+                                                <form method="post" action="{{ url_for('remove_server', server_uuid=server_uuid) }}">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger border-0" 
+                                                            title="刪除"
+                                                            onclick="return confirm('確定要移除此伺服器的備份配置嗎？\n這不會刪除實際的伺服器，只會停止備份。')">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <div class="mb-3">
+                            <i class="fas fa-server text-light fa-4x" style="color: #e5e7eb !important;"></i>
+                        </div>
+                        <h5 class="text-muted fw-light">暫無受管理的伺服器</h5>
+                        <p class="text-muted small">請從左側列表選擇並添加伺服器以開始備份作業。</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const selectAllCheckbox = document.getElementById('selectAll');
+    if (selectAllCheckbox) {
+        selectAllCheckbox.addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('.server-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+    }
+    
+    document.querySelectorAll('.server-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const allCheckboxes = document.querySelectorAll('.server-checkbox');
+            const checkedCheckboxes = document.querySelectorAll('.server-checkbox:checked');
+            
+            if (selectAllCheckbox) {
+                if (checkedCheckboxes.length === 0) {
+                    selectAllCheckbox.indeterminate = false;
+                    selectAllCheckbox.checked = false;
+                } else if (checkedCheckboxes.length === allCheckboxes.length) {
+                    selectAllCheckbox.indeterminate = false;
+                    selectAllCheckbox.checked = true;
+                } else {
+                    selectAllCheckbox.indeterminate = true;
+                }
+            }
+        });
+    });
+    
+    function selectAllServers() {
+        document.querySelectorAll('.server-checkbox').forEach(checkbox => {
+            checkbox.checked = true;
+        });
+    }
+    
+    function confirmAddServers() {
+        const checkedBoxes = document.querySelectorAll('.server-checkbox:checked');
+        if (checkedBoxes.length === 0) {
+            alert('請至少選擇一個伺服器');
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<style>
+    .cursor-pointer { cursor: pointer; }
+    .hover-bg-light:hover { background-color: #f8f9fa; }
+    .transition-base { transition: all 0.2sease-in-out; }
+    .border-start-md { border-left: 0; }
+    @media (min-width: 768px) {
+        .border-start-md { border-left: 1px solid var(--border-color); }
+    }
+</style>
+{% endblock %}
