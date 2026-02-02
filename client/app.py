@@ -5,8 +5,8 @@ import fnmatch
 import requests
 from types import SimpleNamespace
 
-app_path = os.path.dirname(__file__)
-with open(f"{app_path}/config.json") as f:
+app_path = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(app_path, "config.json")) as f:
     config = SimpleNamespace(**json.load(f))
 config.base_url = (
     config.base_url if config.base_url.endswith("/") else config.base_url + "/"

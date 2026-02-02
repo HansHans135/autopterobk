@@ -345,13 +345,15 @@ EOF
 setup_crontab_client() {
     print_info "正在設定 crontab..."
     
-    cat > "$INSTALL_DIR/run_client.sh" << EOF
+    cat > "$INSTALL_DIR/run_client.sh" << 'RUNEOF'
 #!/bin/bash
-cd $INSTALL_DIR/client
-source $VENV_DIR/bin/activate
+INSTALL_DIR="/opt/autopterobk"
+VENV_DIR="$INSTALL_DIR/.venv"
+cd "$INSTALL_DIR/client"
+source "$VENV_DIR/bin/activate"
 python app.py
 deactivate
-EOF
+RUNEOF
     
     chmod +x "$INSTALL_DIR/run_client.sh"
     
