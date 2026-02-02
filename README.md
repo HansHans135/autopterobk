@@ -1,1 +1,1 @@
-`curl -sSL https://raw.githubusercontent.com/hanshans135/autopterobk/main/install.sh | sudo bash -s server`
+`curl -sSL https://raw.githubusercontent.com/HansHans135/autopterobk/main/install.sh | sudo bash -s server`

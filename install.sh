@@ -61,13 +61,27 @@ check_root() {
 }
 
 detect_os() {
+    if [ -f /etc/synoinfo.conf ] || [ -f /etc.defaults/synoinfo.conf ]; then
+        OS="synology"
+        VERSION=$(cat /etc.defaults/VERSION 2>/dev/null | grep productversion | cut -d'"' -f2 || echo "unknown")
+        print_info "檢測到系統: Synology DSM $VERSION"
+        return
+    fi
+    
     if [ -f /etc/os-release ]; then
         . /etc/os-release
         OS=$ID
         VERSION=$VERSION_ID
+    elif [ -f /etc/redhat-release ]; then
+        OS="centos"
+        VERSION=$(cat /etc/redhat-release | grep -oE '[0-9]+' | head -1)
+    elif [ -f /etc/debian_version ]; then
+        OS="debian"
+        VERSION=$(cat /etc/debian_version)
     else
-        print_error "無法檢測作業系統類型"
-        exit 1
+        print_warning "無法檢測作業系統類型，嘗試繼續安裝..."
+        OS="unknown"
+        VERSION="unknown"
     fi
     print_info "檢測到系統: $OS $VERSION"
 }
@@ -90,12 +104,46 @@ install_dependencies() {
         arch|manjaro)
             pacman -Sy --noconfirm python python-pip git curl
             ;;
+        synology)
+            # 群暉 DSM 需要透過套件中心或 opkg/entware 安裝
+            print_warning "群暉 DSM 系統檢測到"
+            print_info "請確保已安裝以下套件："
+            print_info "  - Python 3 (透過套件中心)"
+            print_info "  - Git (透過套件中心或 Community)"
+            
+            # 檢查 Python3 是否存在
+            if ! command -v python3 &> /dev/null; then
+                print_error "找不到 Python3，請先從套件中心安裝 Python 3"
+                exit 1
+            fi
+            
+            # 檢查 git 是否存在
+            if ! command -v git &> /dev/null; then
+                print_error "找不到 Git，請先從套件中心安裝 Git"
+                exit 1
+            fi
+            
+            # 確保 pip 可用
+            if ! python3 -m pip --version &> /dev/null; then
+                print_info "正在安裝 pip..."
+                python3 -m ensurepip --upgrade 2>/dev/null || curl -sSL https://bootstrap.pypa.io/get-pip.py | python3
+            fi
+            ;;
         *)
             print_warning "未知的系統類型，嘗試繼續安裝..."
+            # 嘗試檢查必要的工具
+            if ! command -v python3 &> /dev/null; then
+                print_error "找不到 Python3，請手動安裝"
+                exit 1
+            fi
+            if ! command -v git &> /dev/null; then
+                print_error "找不到 Git，請手動安裝"
+                exit 1
+            fi
             ;;
     esac
     
-    print_success "系統依賴安裝完成"
+    print_success "系統依賴檢查完成"
 }
 
 download_project() {
@@ -114,7 +162,17 @@ download_project() {
 setup_venv() {
     print_info "正在建立 Python 虛擬環境..."
     
-    python3 -m venv "$VENV_DIR"
+    # 群暉可能沒有 venv 模組，嘗試使用 virtualenv 或直接安裝
+    if python3 -m venv "$VENV_DIR" 2>/dev/null; then
+        print_info "使用 venv 建立虛擬環境"
+    elif command -v virtualenv &> /dev/null; then
+        print_info "使用 virtualenv 建立虛擬環境"
+        virtualenv -p python3 "$VENV_DIR"
+    else
+        print_warning "無法建立虛擬環境，嘗試安裝 virtualenv..."
+        python3 -m pip install virtualenv
+        virtualenv -p python3 "$VENV_DIR"
+    fi
     
     print_info "正在安裝 Python 套件..."
     
